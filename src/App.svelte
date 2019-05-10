@@ -73,7 +73,7 @@
   Zero Hour
   <button on:click={reset}>reset</button>
 </h1>
-<div class:{"console"}>
+<div class="console">
   <h2>console 1</h2>
   {#each numbers as num}
     <button class:selected={selection[`c1`][0] === { num }} on:click={() => consoleClick(1, 0, num)}>{num}</button>
