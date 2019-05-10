@@ -13,7 +13,7 @@
     "svelte": "^3.0.0"
   },
   "scripts": {
-    "build": "rollup -c",
+    "now-build": "rollup -c",
     "autobuild": "rollup -c -w",
     "dev": "run-p start:dev autobuild",
     "start": "sirv public",
