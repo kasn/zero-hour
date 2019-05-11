@@ -66,13 +66,22 @@
   }
 
   .console button {
-    width: 16%;
-    font-size: 20px;
+    width: 25%;
+    font-size: 25px;
   }
 
   .console button.selected {
     background-color: red;
     color: white;
+  }
+
+  div.wrapper {
+    display: flex;
+  }
+
+  div.wrapper div.side {
+    margin: 5px;
+    width: 50%;
   }
 </style>
 
@@ -82,22 +91,31 @@
 </h1>
 <div class="console">
   <h2>console 1</h2>
-  {#each numbers as num}
-    <button class:selected={selection[`console1`][0] === num} on:click={() => consoleClick('console1', 0, num)}>{num}</button>
-  {/each}
-  <hr />
-  {#each numbers as num}
-    <button class:selected={selection[`console1`][1] === num} on:click={() => consoleClick('console1', 1, num)}>{num}</button>
-  {/each}
+  <div class="wrapper">
+    <div class="side">
+      {#each numbers as num}
+        <button class:selected={selection[`console1`][0] === num} on:click={() => consoleClick('console1', 0, num)}>{num}</button>
+      {/each}
+    </div>
+    <div class="side">
+      {#each numbers as num}
+        <button class:selected={selection[`console1`][1] === num} on:click={() => consoleClick('console1', 1, num)}>{num}</button>
+      {/each}
+    </div>
+  </div>
   <h2>console 2</h2>
-  {#each numbers as num}
-    <button class:selected={selection[`console2`][0] === num} on:click={() => consoleClick('console2', 0, num)}>{num}</button>
-  {/each}
-  <hr />
-  {#each numbers as num}
-    <button class:selected={selection[`console2`][1] === num} on:click={() => consoleClick('console2', 1, num)}>{num}</button>
-  {/each}
-
+  <div class="wrapper">
+    <div class="side">
+      {#each numbers as num}
+        <button class:selected={selection[`console2`][0] === num} on:click={() => consoleClick('console2', 0, num)}>{num}</button>
+      {/each}
+    </div>
+    <div class="side">
+      {#each numbers as num}
+        <button class:selected={selection[`console2`][1] === num} on:click={() => consoleClick('console2', 1, num)}>{num}</button>
+      {/each}
+    </div>
+  </div>
   {#each possibleOptions as option}
     <h1> {option.node.color} {option.node.number} </h1>
   {/each}
