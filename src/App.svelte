@@ -1,50 +1,57 @@
 <script>
   import range from "lodash/range";
-  import lights from "./configurations.js";
+  import configuration from "./configurations.js";
 
   const numbers = range(1, 13);
 
-  let res = null;
-
   const emptySelection = {
-    c1: [null, null],
-    c2: [null, null]
+    console1: [null, null],
+    console2: [null, null]
   };
 
   let selection = emptySelection;
 
-  let possibleOptions = [];
+  function filterOptions(selection) {
+    let possibleOptions = configuration;
+
+    if (selection.console1[0] !== null) {
+      possibleOptions = possibleOptions.filter(light => {
+        return light[`console1`][0] === selection.console1[0];
+      });
+    }
+
+    if (selection.console1[1] !== null) {
+      possibleOptions = possibleOptions.filter(light => {
+        return light[`console1`][1] === selection.console1[1];
+      });
+    }
+
+    if (selection.console2[0] !== null) {
+      possibleOptions = possibleOptions.filter(light => {
+        return light[`console2`][0] === selection.console2[0];
+      });
+    }
+
+    if (selection.console2[1] !== null) {
+      possibleOptions = possibleOptions.filter(light => {
+        return light[`console2`][1] === selection.console2[1];
+      });
+    }
+
+    return possibleOptions;
+  }
+
+  $: possibleOptions = filterOptions(selection);
 
   function consoleClick(consoleNum, consoleRow, num) {
-    selection[`c${consoleNum}`][consoleRow] = num;
-
-    if (selection.c1[0] !== null) {
-      possibleOptions = lights.filter(light => {
-        return light[`console1`][0] === selection.c1[0];
-      });
-    }
-
-    if (selection.c1[1] !== null) {
-      possibleOptions = lights.filter(light => {
-        return light[`console1`][1] === selection.c1[1];
-      });
-    }
-
-    if (selection.c2[0] !== null) {
-      possibleOptions = lights.filter(light => {
-        return light[`console2`][0] === selection.c2[0];
-      });
-    }
-
-    if (selection.c2[1] !== null) {
-      possibleOptions = lights.filter(light => {
-        return light[`console2`][1] === selection.c2[1];
-      });
-    }
+    selection[consoleNum][consoleRow] = num;
   }
 
   function reset() {
-    selection = emptySelection;
+    selection = {
+      console1: [null, null],
+      console2: [null, null]
+    };
     possibleOptions = [];
   }
 </script>
@@ -76,19 +83,19 @@
 <div class="console">
   <h2>console 1</h2>
   {#each numbers as num}
-    <button class:selected={selection[`c1`][0] === { num }} on:click={() => consoleClick(1, 0, num)}>{num}</button>
+    <button class:selected={selection[`console1`][0] === num} on:click={() => consoleClick('console1', 0, num)}>{num}</button>
   {/each}
   <hr />
   {#each numbers as num}
-    <button class:selected={selection[`c1`][1] === { num }} on:click={() => consoleClick(1, 1, num)}>{num}</button>
+    <button class:selected={selection[`console1`][1] === num} on:click={() => consoleClick('console1', 1, num)}>{num}</button>
   {/each}
   <h2>console 2</h2>
   {#each numbers as num}
-    <button class:selected={selection[`c2`][0] === { num }} on:click={() => consoleClick(2, 0, num)}>{num}</button>
+    <button class:selected={selection[`console2`][0] === num} on:click={() => consoleClick('console2', 0, num)}>{num}</button>
   {/each}
   <hr />
   {#each numbers as num}
-    <button class:selected={selection[`c2`][1] === { num }} on:click={() => consoleClick(2, 1, num)}>{num}</button>
+    <button class:selected={selection[`console2`][1] === num} on:click={() => consoleClick('console2', 1, num)}>{num}</button>
   {/each}
 
   {#each possibleOptions as option}
