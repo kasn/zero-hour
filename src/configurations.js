@@ -75,7 +75,7 @@ const lights = [
   },
 
   {
-    console1: [2, 8],
+    console1: [2, 9],
     console2: [12, 3],
     node: {
       color: "purple",
