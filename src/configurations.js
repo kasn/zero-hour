@@ -856,8 +856,8 @@ const configuration = {
     name: "Void",
     configuration: voidConfiguration
   },
-  solr: {
-    name: "Solr",
+  solar: {
+    name: "Solar",
     configuration: solorConfiguration
   },
   arc: {

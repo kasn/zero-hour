@@ -6,6 +6,7 @@
   import Solar from "./Components/Elements/Solar.svelte";
   import Void from "./Components/Elements/Void.svelte";
   import Siva from "./Components/Siva.svelte";
+  import { arc } from "d3-shape";
 
   const numbers = range(1, 13);
 
@@ -67,7 +68,32 @@
     possibleOptions = [];
   }
 
-  console.log(selection);
+  const arcGenerator = arc();
+  let angle = Math.PI * 2;
+
+  // const slice = 360 / 12;
+
+  function getArcOptions(num) {
+    const start = ((num - 1) * angle * 1) / 12;
+
+    const arcOptions = {
+      innerRadius: 20,
+      outerRadius: 40,
+      startAngle: start,
+      endAngle: start + (angle * 1) / 12
+    };
+
+    return arcOptions;
+  }
+
+  const arcs = numbers.map(num => {
+    const arcOptions = getArcOptions(num);
+    return {
+      num: num,
+      d: arcGenerator(arcOptions),
+      centroid: arcGenerator.centroid(arcOptions)
+    };
+  });
 </script>
 
 <style>
@@ -105,11 +131,38 @@
 
   div.wrapper {
     display: flex;
+    flex-wrap: wrap;
   }
 
   div.wrapper div.side {
-    margin: 5px;
+    max-width: 50%;
     width: 50%;
+  }
+
+  svg {
+    width: 100%;
+  }
+
+  path {
+    /* stroke: white; */
+  }
+
+  text {
+    font-size: 8px;
+    text-anchor: middle;
+  }
+
+  path.dial-section,
+  svg text {
+    cursor: pointer;
+  }
+
+  path.dial-section:hover {
+    fill: yellow;
+  }
+
+  path.dial-section.selected {
+    fill: yellow;
   }
 </style>
 
@@ -122,56 +175,158 @@
   <button on:click={() => setActiveConfiguration('arc')}>
     <Arc />
   </button>
-  <button on:click={() => setActiveConfiguration('solr')}>
+  <button on:click={() => setActiveConfiguration('solar')}>
     <Solar />
   </button>
-  <button class="reset" on:click={reset}>reset</button>
+  <button class="reset" on:click={reset}>reset all</button>
 </h1>
 <h1>{configurations[activeConfiguration].name}</h1>
 <div class="console">
   <h2>console 1</h2>
   <div class="wrapper">
     <div class="side">
-      {#each numbers as num}
-        <button
-          class:selected={selection[`console1`][0] === num}
-          on:click={() => consoleClick('console1', 0, num)}>
-           {num}
-        </button>
-      {/each}
+      <svg viewBox="0 0 100 100">
+        <g transform="translate(50,50)">
+          {#each arcs as arc}
+            <path
+              on:click={() => consoleClick('console1', 0, arc.num)}
+              d={arc.d}
+              fill="#FF0000"
+              class="dial-section"
+              class:selected={selection[`console1`][0] === arc.num} />
+            <text
+              x={arc.centroid[0]}
+              y={arc.centroid[1]}
+              on:click={() => consoleClick('console1', 0, arc.num)}>
+               {arc.num}
+            </text>
+          {/each}
+        </g>
+      </svg>
+      <span class="reset" on:click={() => consoleClick('console1', 0, null)}>
+        reset
+      </span>
     </div>
     <div class="side">
-      {#each numbers as num}
-        <button
-          class:selected={selection[`console1`][1] === num}
-          on:click={() => consoleClick('console1', 1, num)}>
-           {num}
-        </button>
-      {/each}
+      <svg viewBox="0 0 100 100">
+        <g transform="translate(50,50)">
+          {#each arcs as arc}
+            <path
+              on:click={() => consoleClick('console1', 1, arc.num)}
+              d={arc.d}
+              fill="#FF0000"
+              class="dial-section"
+              class:selected={selection[`console1`][1] === arc.num} />
+            <text
+              x={arc.centroid[0]}
+              y={arc.centroid[1]}
+              on:click={() => consoleClick('console1', 1, arc.num)}>
+               {arc.num}
+            </text>
+          {/each}
+        </g>
+      </svg>
+      <span class="reset" on:click={() => consoleClick('console1', 1, null)}>
+        reset
+      </span>
     </div>
   </div>
   <h2>console 2</h2>
   <div class="wrapper">
     <div class="side">
-      {#each numbers as num}
-        <button
-          class:selected={selection[`console2`][0] === num}
-          on:click={() => consoleClick('console2', 0, num)}>
-           {num}
-        </button>
-      {/each}
+      <svg viewBox="0 0 100 100">
+        <g transform="translate(50,50)">
+          {#each arcs as arc}
+            <path
+              on:click={() => consoleClick('console2', 0, arc.num)}
+              d={arc.d}
+              fill="#FF0000"
+              class="dial-section"
+              class:selected={selection[`console2`][0] === arc.num} />
+            <text
+              x={arc.centroid[0]}
+              y={arc.centroid[1]}
+              on:click={() => consoleClick('console2', 0, arc.num)}>
+               {arc.num}
+            </text>
+          {/each}
+        </g>
+      </svg>
+      <span class="reset" on:click={() => consoleClick('console2', 0, null)}>
+        reset
+      </span>
     </div>
     <div class="side">
-      {#each numbers as num}
-        <button
-          class:selected={selection[`console2`][1] === num}
-          on:click={() => consoleClick('console2', 1, num)}>
-           {num}
-        </button>
-      {/each}
+      <svg viewBox="0 0 100 100">
+        <g transform="translate(50,50)">
+          {#each arcs as arc}
+            <path
+              on:click={() => consoleClick('console2', 1, arc.num)}
+              d={arc.d}
+              fill="#FF0000"
+              class="dial-section"
+              class:selected={selection[`console2`][1] === arc.num} />
+            <text
+              x={arc.centroid[0]}
+              y={arc.centroid[1]}
+              on:click={() => consoleClick('console2', 1, arc.num)}>
+               {arc.num}
+            </text>
+          {/each}
+        </g>
+      </svg>
+      <span class="reset" on:click={() => consoleClick('console2', 1, null)}>
+        reset
+      </span>
     </div>
   </div>
   {#each possibleOptions as option}
     <h1> {option.node.color} {option.node.number} </h1>
   {/each}
+  <hr />
+  <footer>
+    <p>
+      Data is distilled from spreadsheats all over the internet, mainly from
+      <a href="https://www.reddit.com/r/destinythegame" target="_blank">
+        /r/destinythegame
+      </a>
+      and
+      <a href="https://www.reddit.com/r/raidsecrets" target="_blank">
+        r/raidsecrets
+      </a>
+    </p>
+    <p>
+      Element icon made by
+      <a href="https://twitter.com/justrealmilk" target="_blank">
+        justrealmilk
+      </a>
+      <a href="https://github.com/justrealmilk/destiny-icons" target="_blank">
+        justrealmilk/destiny-icons
+      </a>
+    </p>
+    <p>
+      other solvers:
+      <a
+        href="https://huntertyberry-outbreak-configs.netlify.com/"
+        target="_blank">
+        a)
+      </a>
+      <a href="https://demoweb.me/kas/d2zerohour/" target="_blank">b)</a>
+      <a href="http://www.ensemblefc.com/cryptarchlocks.php" target="_blank">
+        c)
+      </a>
+      <a href="http://www.ensemblefc.com/cryptarchrings.php" target="_blank">
+        d)
+      </a>
+    </p>
+    <p>
+      Powered by
+      <a
+        href="https://www.bungie.net/en/ClanV2/Chat?groupId=2131814"
+        target="_blank">
+        Maschinen und Rabauken
+      </a>
+    </p>
+
+  </footer>
 </div>
