@@ -6,7 +6,8 @@ body {
 }
 
 body {
-  color: #333;
+  color: #ff0000;
+  background-color: #000;
   margin: 0;
   padding: 0px;
   margin: 0;
@@ -30,19 +31,6 @@ a:visited {
 
 label {
   display: block;
-}
-
-input,
-button,
-select,
-textarea {
-  font-family: inherit;
-  font-size: inherit;
-  padding: 0.4em;
-  margin: 0;
-  box-sizing: border-box;
-  border: 1px solid #ccc;
-  border-radius: 0px;
 }
 
 h1 {
