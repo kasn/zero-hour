@@ -71,8 +71,6 @@
   const arcGenerator = arc();
   let angle = Math.PI * 2;
 
-  // const slice = 360 / 12;
-
   function getArcOptions(num) {
     const start = ((num - 1) * angle * 1) / 12;
 
@@ -84,6 +82,20 @@
     };
 
     return arcOptions;
+  }
+
+  function isAvailable(
+    activeConsole,
+    consoleSide,
+    num,
+    possibleOptions,
+    selection
+  ) {
+    const optionsForSelection = possibleOptions.filter(option => {
+      return option[activeConsole][consoleSide] === num;
+    });
+
+    return optionsForSelection.length > 0;
   }
 
   const arcs = numbers.map(num => {
@@ -157,6 +169,14 @@
     cursor: pointer;
   }
 
+  path.dial-section {
+    fill: grey;
+  }
+
+  path.dial-section.is-available {
+    fill: red;
+  }
+
   path.dial-section:hover {
     fill: yellow;
   }
@@ -191,8 +211,8 @@
             <path
               on:click={() => consoleClick('console1', 0, arc.num)}
               d={arc.d}
-              fill="#FF0000"
               class="dial-section"
+              class:is-available={isAvailable('console1', 0, arc.num, possibleOptions, selection)}
               class:selected={selection[`console1`][0] === arc.num} />
             <text
               x={arc.centroid[0]}
@@ -214,8 +234,8 @@
             <path
               on:click={() => consoleClick('console1', 1, arc.num)}
               d={arc.d}
-              fill="#FF0000"
               class="dial-section"
+              class:is-available={isAvailable('console1', 1, arc.num, possibleOptions, selection)}
               class:selected={selection[`console1`][1] === arc.num} />
             <text
               x={arc.centroid[0]}
@@ -240,9 +260,10 @@
             <path
               on:click={() => consoleClick('console2', 0, arc.num)}
               d={arc.d}
-              fill="#FF0000"
               class="dial-section"
               class:selected={selection[`console2`][0] === arc.num} />
+            class:is-available={isAvailable('console2', 0, arc.num, possibleOptions, selection)}
+
             <text
               x={arc.centroid[0]}
               y={arc.centroid[1]}
@@ -263,8 +284,8 @@
             <path
               on:click={() => consoleClick('console2', 1, arc.num)}
               d={arc.d}
-              fill="#FF0000"
               class="dial-section"
+              class:is-available={isAvailable('console2', 1, arc.num, possibleOptions, selection)}
               class:selected={selection[`console2`][1] === arc.num} />
             <text
               x={arc.centroid[0]}
