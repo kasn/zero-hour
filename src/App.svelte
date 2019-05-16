@@ -307,6 +307,9 @@
   <hr />
   <footer>
     <p>
+      &copy; <a href="https://www.reddit.com/user/kasnhasn/" target="_blank">/u/kasnhasn</a>
+    </p>
+    <p>
       Data is distilled from spreadsheats all over the internet, mainly from
       <a href="https://www.reddit.com/r/destinythegame" target="_blank">
         /r/destinythegame
