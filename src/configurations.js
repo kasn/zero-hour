@@ -681,6 +681,14 @@ const arcConfiguration = [
     }
   },
   {
+    console1: [8, 3],
+    console2: [null, null],
+    node: {
+      color: colors.purple,
+      number: 7
+    }
+  },
+  {
     console1: [8, 9],
     console2: [null, null],
     node: {
@@ -849,6 +857,10 @@ const arcConfiguration = [
     }
   }
 ];
+
+arcConfiguration.map(o => {
+  console.table(o.console1[0], o.console1[1]);
+});
 
 const solorConfiguration = [];
 const configuration = {
