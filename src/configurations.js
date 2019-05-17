@@ -858,9 +858,9 @@ const arcConfiguration = [
   }
 ];
 
-arcConfiguration.map(o => {
-  console.table(o.console1[0], o.console1[1]);
-});
+// arcConfiguration.map(o => {
+//   console.table(o.console1[0], o.console1[1]);
+// });
 
 const solorConfiguration = [];
 const configuration = {
