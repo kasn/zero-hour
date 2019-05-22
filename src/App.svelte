@@ -17,7 +17,7 @@
   };
 
   let selection = emptySelection;
-  $: activeConfiguration = "arc"; // @TODO get week an preselect
+  $: activeConfiguration = "solar"; // @TODO get week and preselect
 
   function setActiveConfiguration(element) {
     activeConfiguration = element;

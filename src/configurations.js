@@ -862,7 +862,401 @@ const arcConfiguration = [
 //   console.table(o.console1[0], o.console1[1]);
 // });
 
-const solorConfiguration = [];
+const solorConfiguration = [
+  {
+    console1: [1, 2],
+    console2: [null, null],
+    node: {
+      color: colors.green,
+      number: 4
+    }
+  },    
+  {
+    console1: [1, 3],
+    console2: [null, null],
+    node: {
+      color: colors.cyan,
+      number: 2
+    }
+  },    
+  {
+    console1: [1, 7],
+    console2: [2, null],
+    node: {
+      color: colors.white,
+      number: 6
+    }
+  },    
+  {
+    console1: [1, 7],
+    console2: [9, null],
+    node: {
+      color: colors.green,
+      number: 6
+    }
+  },    
+  {
+    console1: [1, 10],
+    console2: [null, null],
+    node: {
+      color: colors.yellow,
+      number: 2
+    }
+  },    
+  {
+    console1: [1, 11],
+    console2: [null, null],
+    node: {
+      color: colors.yellow,
+      number: 6
+    }
+  },    
+  {
+    console1: [2, 6],
+    console2: [null, null],
+    node: {
+      color: colors.purple,
+      number: 2
+    }
+  },    
+  {
+    console1: [2, 10],
+    console2: [null, null],
+    node: {
+      color: colors.purple,
+      number: 5
+    }
+  },    
+  {
+    console1: [2, 11],
+    console2: [1, null],
+    node: {
+      color: colors.blue,
+      number: 4
+    }
+  },    
+  {
+    console1: [2, 11],
+    console2: [12, null],
+    node: {
+      color: colors.blue,
+      number: 12
+    }
+  },    
+  {
+    console1: [3, 5],
+    console2: [null, null],
+    node: {
+      color: colors.white,
+      number: 7
+    }
+  },    
+  {
+    console1: [4, 6],
+    console2: [null, null],
+    node: {
+      color: colors.white,
+      number: 5
+    }
+  },    
+  {
+    console1: [4, 8],
+    console2: [null, null],
+    node: {
+      color: colors.red,
+      number: 2
+    }
+  },    
+  {
+    console1: [5, 6],
+    console2: [null, null],
+    node: {
+      color: colors.purple,
+      number: 6
+    }
+  },    
+  {
+    console1: [5, 10],
+    console2: [null, null],
+    node: {
+      color: colors.purple,
+      number: 4
+    }
+  },    
+  {
+    console1: [5, 11],
+    console2: [null, null],
+    node: {
+      color: colors.cyan,
+      number: 6
+    }
+  },    
+  {
+    console1: [5, 11],
+    console2: [null, null],
+    node: {
+      color: colors.yellow,
+      number: 5
+    }
+  },    
+  {
+    console1: [6, 7],
+    console2: [null, null],
+    node: {
+      color: colors.green,
+      number: 7
+    }
+  },    
+  {
+    console1: [6, 8],
+    console2: [null, null],
+    node: {
+      color: colors.purple,
+      number: 7
+    }
+  },    
+  {
+    console1: [6, 11],
+    console2: [null, null],
+    node: {
+      color: colors.purple,
+      number: 1
+    }
+  },    
+  {
+    console1: [7, 4],
+    console2: [null, null],
+    node: {
+      color: colors.red,
+      number: 7
+    }
+  },    
+  {
+    console1: [7, 8],
+    console2: [null, null],
+    node: {
+      color: colors.white,
+      number: 3
+    }
+  },    
+  {
+    console1: [7, 8],
+    console2: [null, null],
+    node: {
+      color: colors.green,
+      number: 3
+    }
+  },    
+  {
+    console1: [7, 11],
+    console2: [null, null],
+    node: {
+      color: colors.red,
+      number: 1
+    }
+  },    
+  {
+    console1: [7, 12],
+    console2: [null, null],
+    node: {
+      color: colors.red,
+      number: 7
+    }
+  },    
+  {
+    console1: [8, 5],
+    console2: [null, null],
+    node: {
+      color: colors.green,
+      number: 1
+    }
+  },    
+  {
+    console1: [8, 7],
+    console2: [null, null],
+    node: {
+      color: colors.blue,
+      number: 3
+    }
+  },    
+  {
+    console1: [8, 10],
+    console2: [null, null],
+    node: {
+      color: colors.white,
+      number: 1
+    }
+  },    
+  {
+    console1: [8, 11],
+    console2: [null, null],
+    node: {
+      color: colors.red,
+      number: 5
+    }
+  },    
+  {
+    console1: [8, 12],
+    console2: [null, null],
+    node: {
+      color: colors.blue,
+      number: 5
+    }
+  },    
+  {
+    console1: [9, 4],
+    console2: [null, null],
+    node: {
+      color: colors.cyan,
+      number: 7
+    }
+  },    
+  {
+    console1: [9, 6],
+    console2: [null, null],
+    node: {
+      color: colors.cyan,
+      number: 3
+    }
+  },    
+  {
+    console1: [9, 7],
+    console2: [null, null],
+    node: {
+      color: colors.yellow,
+      number: 1
+    }
+  },    
+  {
+    console1: [9, 10],
+    console2: [3, null],
+    node: {
+      color: colors.purple,
+      number: 3
+    }
+  },    
+  {
+    console1: [9, 10],
+    console2: [10, null],
+    node: {
+      color: colors.green,
+      number: 2
+    }
+  },    
+  {
+    console1: [9, 10],
+    console2: [11, null],
+    node: {
+      color: colors.blue,
+      number: 1
+    }
+  },    
+  {
+    console1: [9, 11],
+    console2: [3, null],
+    node: {
+      color: colors.blue,
+      number: 2
+    }
+  },    
+  {
+    console1: [9, 11],
+    console2: [7, null],
+    node: {
+      color: colors.white,
+      number: 2
+    }
+  },      
+  {
+    console1: [10, 3],
+    console2: [null, null],
+    node: {
+      color: colors.yellow,
+      number: 3
+    }
+  },    
+  {
+    console1: [10, 5],
+    console2: [null, null],
+    node: {
+      color: colors.cyan,
+      number: 1
+    }
+  },    
+  {
+    console1: [10, 6],
+    console2: [null, null],
+    node: {
+      color: colors.cyan,
+      number: 2
+    }
+  },    
+  {
+    console1: [10, 10],
+    console2: [null, null],
+    node: {
+      color: colors.cyan,
+      number: 5
+    }
+  },    
+  {
+    console1: [11, 2],
+    console2: [null, null],
+    node: {
+      color: colors.white,
+      number: 4
+    }
+  },    
+  {
+    console1: [11, 4],
+    console2: [null, null],
+    node: {
+      color: colors.blue,
+      number: 7
+    }
+  },    
+  {
+    console1: [11, 9],
+    console2: [null, null],
+    node: {
+      color: colors.yellow,
+      number: 7
+    }
+  },    
+  {
+    console1: [11, 11],
+    console2: [null, null],
+    node: {
+      color: colors.red,
+      number: 3
+    }
+  },    
+  {
+    console1: [12, 1],
+    console2: [null, null],
+    node: {
+      color: colors.red,
+      number: 6
+    }
+  },    
+  {
+    console1: [12, 7],
+    console2: [null, null],
+    node: {
+      color: colors.yellow,
+      number: 4
+    }
+  },    
+  {
+    console1: [12, 10],
+    console2: [null, null],
+    node: {
+      color: colors.green,
+      number: 5
+    }
+  },    
+  
+];
 const configuration = {
   void: {
     name: "Void",
